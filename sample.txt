@@ -1,0 +1,9 @@
+SELECTrelkind,
+       relname,
+       pg_catalog.pg_namespace.nspname,
+       pg_size_pretty(pg_relation_size(pg_catalog.pg_class.oid))
+FROMpg_catalog.pg_class
+       INNERJOINpg_catalog.pg_namespace
+         ONrelnamespace =pg_catalog.pg_namespace.oid
+ORDERBYpg_catalog.pg_namespace.nspname,
+          pg_relation_size(pg_catalog.pg_class.oid) DESC;
